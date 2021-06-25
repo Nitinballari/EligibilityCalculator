@@ -1,0 +1,79 @@
+<div class="page">
+    <div class="template-wrapper">
+        <form #regForm='ngForm' (ngSubmit)="Register(regForm); openDialog()">
+            <h2 class="text-center">Template-driven form</h2>
+            <br />
+            <div class="form-group">
+                <label for="FirstNameId" class="form-label">First name</label>
+                <input type="text" class="form-control " id="FirstNameId" placeholder="First Name" name="firstname" ngModel
+                    required="">
+                <div class="invalid-feedback">
+                    Please enter your First Name.
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="LastNameId" class="form-label">First name</label>
+                <input type="text" class="form-control" id="LastNameId" placeholder="Last Name" name="lastname" ngModel
+                    required>
+                <div class="invalid-feedback">
+                    Please enter your Last Name.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender" class="form-label">Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" id="male" type="radio" value="Male" name="gender" ngModel required>
+                    <label for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" id="female" type="radio" value="Female" name="gender" ngModel required>
+                    <label for="female">Female</label>
+                    <div class="invalid-feedback">
+                        Please Select Gender.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Submit</button>
+        </form>
+    </div>
+    
+    <div class="reactive-wrapper">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit();openDialogForReactive()">
+            <h2 class="text-center">Reactive form</h2>
+            <br />
+            <h5>Address</h5>
+            <div class="form-group ">
+                <label for="street">Street:</label>
+                <input id="street" class="form-control" type="text" formControlName="street" required>
+                <div class="invalid-feedback">
+                    Please enter street.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">City: </label>
+                <input id="city" class="form-control " type="text" formControlName="city" required>
+                <div class="invalid-feedback">
+                    city is required
+                </div>
+    
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input id="state" class="form-control" type="text" formControlName="state" required>
+                <div class="invalid-feedback">
+                    Please enter State.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip Code: </label>
+                <input id="zip" class="form-control" type="text" formControlName="zip" required>
+                <div class="invalid-feedback">
+                    Please enter Zip.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Submit</button>
+        </form>
+    </div>
+    </div>
+    

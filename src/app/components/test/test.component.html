@@ -1,0 +1,134 @@
+<div class="page">
+  <div class="template-wrapper">
+    <form #TempForm='ngForm' (ngSubmit)="SubmitForm(TempForm)" class="was-validated">
+      <h2 class="text-center">Template-driven form</h2>
+      <br />
+      <div class="form-group">
+        <label for="FirstNameId" class="form-label">First name</label>
+        <input type="text" class="form-control " id="FirstNameId" placeholder="First Name" name="firstname" ngModel
+          required #firstname="ngModel">
+        <div *ngIf="firstname.invalid && firstname.touched" class="invalid-feedback">
+          Please enter your First Name.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="LastNameId" class="form-label">First name</label>
+        <input type="text" class="form-control" id="LastNameId" placeholder="Last Name" name="lastname" ngModel required
+          #lastname="ngModel">
+        <div *ngIf="lastname.invalid && lastname.touched" class="invalid-feedback">
+          Please enter your Last Name.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="gender" class="form-label">Gender</label>
+        <div class="form-check">
+          <input class="form-check-input" id="male" type="radio" value="Male" name="gender" ngModel required
+            #gender="ngModel">
+          <label for="male">Male</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" id="female" type="radio" value="Female" name="gender" ngModel required
+            #gender="ngModel">
+          <label for="female">Female</label>
+          <div *ngIf="gender.invalid && gender.touched" class="invalid-feedback">
+            Please Select Gender.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!TempForm.valid" data-toggle="modal"
+        data-target="#exampleModal">Submit</button>
+    </form>
+  </div>
+
+  <!--Template-Driven Form Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Template-Driven Form Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <h4>First Name:-  {{firstname.value}}</h4> -->
+          <h4>First Name:- {{TempForm.value.firstname}}</h4>
+          <h4>Last Name:- {{TempForm.value.lastname}}</h4>
+          <h4>Gender:- {{TempForm.value.gender}}</h4>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="reactive-wrapper">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-center">Reactive form</h2>
+      <br />
+      <h5>Address</h5>
+      <div class="form-group ">
+        <label for="street">Street:</label>
+        <input id="street" class="form-control" type="text" formControlName="street">
+
+        <small *ngIf="street.invalid && street.touched" class="text-danger">Street is Required</small>
+      </div>
+      <div class="form-group">
+        <label for="city">City: </label>
+        <input id="city" class="form-control " type="text" formControlName="city">
+
+        <small *ngIf="city.invalid && city.touched" class="text-danger">city is Required</small>
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input id="state" class="form-control" type="text" formControlName="state">
+
+        <small *ngIf="state.invalid && state.touched" class="text-danger">state is Required</small>
+      </div>
+      <div class="form-group">
+        <label for="zip">Zip Code: </label>
+        <input id="zip" class="form-control" type="text" formControlName="zip">
+
+        <small *ngIf="zip.invalid && zip.touched" class="text-danger">zip is Required</small>
+        <div class="form-control-feedback" *ngIf="zip.errors && (zip.dirty || zip.touched)">
+
+          <small *ngIf="zip.errors.pattern" class="text-danger">Number Only</small>
+
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!reactiveForm.valid" data-toggle="modal"
+        data-target="#ReactiveModal">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!--Reactive Form Modal -->
+<div class="modal fade" id="ReactiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reactive Form Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Street:- {{reactiveForm.value.street}}</h4>
+        <h4>city:- {{reactiveForm.value.city}}</h4>
+        <h4>state:- {{reactiveForm.value.state}}</h4>
+        <h4>zip:- {{reactiveForm.value.zip}}</h4>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

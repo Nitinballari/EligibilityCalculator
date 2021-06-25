@@ -1,0 +1,47 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
+
+<!-- 
+<h3>first name {{fnameModal}}</h3>
+<h3>last name {{lnameModal}}</h3>
+<button (click)="onNoClick()">save</button>
+<h2 mat-dialog-title>Delete all elements?</h2>
+<mat-dialog-content>This will delete all elements that are currently on this page and cannot be undone.
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+     The mat-dialog-close directive optionally accepts a value as a result for the dialog.
+    <button mat-button [mat-dialog-close]="true">Delete</button>
+</mat-dialog-actions> -->
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+            <h4 class="modal-title">Popup From Template-driven Form</h4>
+
+        </div>
+
+        <div class="modal-body">
+            <h4>First Name:-  {{fnameModal}}</h4>
+            <h4>Last Name:-   {{lnameModal}}</h4>  
+            <h4>Gender:-   {{genderModal}}</h4>  
+       
+            <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="closeDialog()">save</button>
+          </div>
+        </div>
+    </div>
+</div>

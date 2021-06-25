@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title">Popup From Reactive Form</h4>
+        </div>
+
+        <div class="modal-body">
+           
+           <h4>Street:-  {{street}}</h4>
+           <h4>city:-   {{city}}</h4>  
+           <h4>state:-   {{state}}</h4>  
+           <h4>zip:-   {{zip}}</h4> 
+          <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"  data-dismiss="modal"
+            (click)="closeDialog()">save</button>
+            <!-- <button type="button" class="btn btn-danger abc" data-dismiss="modal">Close</button> -->
+        </div>
+    </div> 
+    </div>
+</div>
